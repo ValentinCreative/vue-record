@@ -26,12 +26,14 @@ export default {
       if (this.mode === 'press') {
         return
       }
+      this.$emit('stop')
       return this.stop()
     },
     startRecording () {
       if (this.isRecording && this.mode === 'press') {
         return this.stop()
       }
+      this.$emit('start')
       return this.start()
     }
   }
