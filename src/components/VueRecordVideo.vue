@@ -57,27 +57,3 @@ export default {
   }
 }
 </script>
-
-<style lang="scss">
-.vue-video-recorder {
-  color: white;
-  border-radius: 18px;
-  position: relative;
-  display: flex;
-  font-size: 16px;
-  cursor: pointer;
-
-  .recorder-icon {
-    width: 64px;
-    height: 64px;
-    background-color: #4DB6AC;
-    border-radius: 50%;
-    display:inline-block;
-    text-align: center;
-    display: flex;
-    justify-content: center;
-    align-content: center;
-    align-items: center;
-  }
-}
-</style>
