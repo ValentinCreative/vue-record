@@ -17,7 +17,6 @@ export default {
       try {
         this.$_stream = await this.getStream()
         this.prepareRecorder()
-        this.$emit('start', new Date())
         this.$_mediaRecorder.start()
       } catch (e) {
         this.$emit('error', e)
@@ -27,7 +26,6 @@ export default {
     },
     stop () {
       if (!this.isRecording) return
-      this.$emit('stop', new Date())
       this.$_mediaRecorder.stop()
       this.$_stream.getTracks().forEach(t => t.stop())
     },
@@ -70,18 +68,18 @@ export default {
       this.$_mediaRecorder.addEventListener('start', () => {
         this.isRecording = true
         this.isPaused = false
-        this.$emit('start')
+        this.$emit('start', new Date())
       })
 
       this.$_mediaRecorder.addEventListener('resume', () => {
         this.isRecording = true
         this.isPaused = false
-        this.$emit('resume')
+        this.$emit('resume', new Date())
       })
 
       this.$_mediaRecorder.addEventListener('pause', () => {
         this.isPaused = true
-        this.$emit('pause')
+        this.$emit('pause', new Date())
       })
 
       // Collect the available data into chunks
@@ -94,7 +92,7 @@ export default {
       // On recording stop get the data and emit the result
       // than clear all the recording chunks
       this.$_mediaRecorder.addEventListener('stop', () => {
-        this.$emit('stop')
+        this.$emit('stop', new Date())
 
         const blobData = new Blob(this.chunks)
         if (blobData.size > 0) {
