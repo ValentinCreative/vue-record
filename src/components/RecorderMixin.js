@@ -17,6 +17,7 @@ export default {
       try {
         this.$_stream = await this.getStream()
         this.prepareRecorder()
+        this.$emit('start', new Date())
         this.$_mediaRecorder.start()
       } catch (e) {
         this.$emit('error', e)
@@ -26,6 +27,7 @@ export default {
     },
     stop () {
       if (!this.isRecording) return
+      this.$emit('stop', new Date())
       this.$_mediaRecorder.stop()
       this.$_stream.getTracks().forEach(t => t.stop())
     },
