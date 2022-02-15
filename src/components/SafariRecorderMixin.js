@@ -153,18 +153,18 @@ export default {
       this.$_mediaRecorder.addEventListener("start", () => {
         this.isRecording = true;
         this.isPaused = false;
-        this.$emit("start");
+        this.$emit("start", new Date());
       });
 
       this.$_mediaRecorder.addEventListener("resume", () => {
         this.isRecording = true;
         this.isPaused = false;
-        this.$emit("resume");
+        this.$emit("resume", new Date());
       });
 
       this.$_mediaRecorder.addEventListener("pause", () => {
         this.isPaused = true;
-        this.$emit("pause");
+        this.$emit("pause", new Date());
       });
 
       // Collect the available data into chunks
@@ -183,7 +183,7 @@ export default {
       this.$_mediaRecorder.addEventListener(
         "stop",
         () => {
-          this.$emit("stop");
+          this.$emit("stop", new Date());
 
           const blobData = new Blob(this.chunks, {
             type: this.$_mediaRecorder.mimeType
