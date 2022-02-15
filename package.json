@@ -1,5 +1,5 @@
 {
-  "name": "@codekraft-studio/vue-record",
+  "name": "@Surglab/vue-record",
   "version": "0.0.3",
   "main": "dist/VueRecord.umd.js",
   "scripts": {
